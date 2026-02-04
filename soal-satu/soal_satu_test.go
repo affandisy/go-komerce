@@ -1,19 +1,47 @@
 package main
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/go-openapi/testify/assert"
 )
 
 func TestSortCharacter(t *testing.T) {
-	input1 := "Sample Case"
-	vowels, consonants := SortCharacters(input1)
+	tests := []struct {
+		name              string
+		input             string
+		expectedVowel     string
+		expectedConsonant string
+	}{
+		{"First Case", "Sample Case", "aaee", "ssmplc"},
+		{"Second Case", "Next Case", "eea", "nxtcs"},
+	}
 
-	fmt.Println("Vowel Characters: ", vowels)
-	fmt.Println("Consonant Characters: ", consonants)
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			v, k := SortCharacters(tt.input)
+			assert.Equal(t, tt.expectedVowel, v)
+			assert.Equal(t, tt.expectedConsonant, k)
+		})
+	}
+}
 
-	input2 := "Next Case"
-	vowels2, consonants2 := SortCharacters(input2)
-	fmt.Println("Vowel Characters: ", vowels2)
-	fmt.Println("Consonant Characters: ", consonants2)
+func TestSortCharacterBetter(t *testing.T) {
+	tests := []struct {
+		name              string
+		input             string
+		expectedVowel     string
+		expectedConsonant string
+	}{
+		{"First Case", "Sample Case", "aaee", "ssmplc"},
+		{"Second Case", "Next Case", "eea", "nxtcs"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			v, k := SortCharactersBetter(tt.input)
+			assert.Equal(t, tt.expectedVowel, v)
+			assert.Equal(t, tt.expectedConsonant, k)
+		})
+	}
 }

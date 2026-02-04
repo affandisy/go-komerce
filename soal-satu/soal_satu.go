@@ -8,23 +8,21 @@ import (
 func SortCharacters(input string) (string, string) {
 	vowels := ""
 	consonants := ""
-	panjangInput := len(input)
+	// panjangInput := len(input)
 
 	inputLowCase := strings.ToLower(input)
 
-	for i := 0; i < panjangInput; i++ {
-		char := inputLowCase[i]
+	for _, char := range inputLowCase {
+		sChar := string(char)
 
-		if char == ' ' || char == '\n' {
+		if sChar == " " || sChar == "\n" {
 			continue
 		}
 
-		if char >= 'a' && char <= 'z' {
-			if char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u' {
-				vowels = vowels + string(char)
-			} else {
-				consonants = consonants + string(char)
-			}
+		if sChar == "a" || sChar == "e" || sChar == "i" || sChar == "o" || sChar == "u" {
+			vowels = vowels + sChar
+		} else {
+			consonants = consonants + sChar
 		}
 	}
 
