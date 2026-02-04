@@ -15,7 +15,7 @@ func SortCharacters(input string) (string, string) {
 	for _, char := range inputLowCase {
 		sChar := string(char)
 
-		if sChar == " " || sChar == "\n" {
+		if sChar == " " {
 			continue
 		}
 
